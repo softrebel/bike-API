@@ -1,0 +1,12 @@
+language: python
+python:
+  - "3.8"
+os: linux
+services:
+  - mysql
+before_install:
+  - mysql -e ./scripts/01_create_database_tables.sql
+install:
+  - pip install -r requirements.txt
+script:
+  - python ./tests/integration/migration.py
